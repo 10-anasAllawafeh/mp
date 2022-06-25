@@ -34,6 +34,15 @@
           <img src="{{ asset('img/Free_Sample_By_Wix (1).jfif')}}" width="100" height="100" alt="logo">
         </a>
         <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact US</a>
+          </li>
+              <li class="nav-item">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
         <li class="nav-item mx-2">
           {{-- <!-- Authentication Links --> --}}
           @guest
@@ -55,6 +64,8 @@
                                       document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
+                    <a class="dropdown-item" href="{{ url('/home') }}">profile
+                    </a>
   
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
@@ -73,7 +84,7 @@
 
         {{-- <footer class="bd-footer py-4 py-md-5 mt-5 bg-light"> --}}
           <footer class="bd-footer">
-            <div class="container py-4 py-md-5 px-4 px-md-3">
+            <div class=" py-4 py-md-5 px-5 px-md-1">
               <div class="row">
                 <div class="col-lg-3 mb-3">
                   <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="{{url('/')}}" aria-label="">
@@ -96,25 +107,24 @@
                     <li class="mb-2"><a href="">Swag Store</a></li>
                   </ul> -->
                 <!-- </div> -->
-                <div class="col-6 col-lg-2 offset-lg-3 mb-3">
+                <div class="col-6 col-lg-2 offset-lg-5 mb-3">
                   <h5>useful links</h5>
                   <ul class="list-unstyled">
-                    <li class="mb-2"><a href="/docs/5.2/getting-started/">Getting started</a></li>
-                    <li class="mb-2"><a href="/docs/5.2/examples/starter-template/">Starter template</a></li>
-                    <li class="mb-2"><a href="/docs/5.2/getting-started/webpack/">Webpack</a></li>
-                    <li class="mb-2"><a href="/docs/5.2/getting-started/parcel/">Parcel</a></li>
+                    <li class="mb-2"><a href="/">Home</a></li>
+                    <li class="mb-2"><a href="/about">About us</a></li>
+                    <li class="mb-2"><a href="/contact">Contact us</a></li>
                   </ul>
                 </div>
                 <div class="col-6 col-lg-2 mb-3">
                   <h5>Contact Information</h5>
                   <ul class="list-unstyled">
-                    <li class="mb-2"><a href="https://github.com/twbs/bootstrap">Bootstrap 5</a></li>
-                    <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap 4</a></li>
-                    <li class="mb-2"><a href="https://github.com/twbs/icons">Icons</a></li>
-                    <li class="mb-2"><a href="https://github.com/twbs/rfs">RFS</a></li>
+                    <li class="mb-2"><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="mb-2"><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li class="mb-2"><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li class="mb-2"><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
                   </ul>
                 </div>
-                <div class="col-6 col-lg-2 mb-3">
+                {{-- <div class="col-6 col-lg-2 mb-3">
                   <h5>Community</h5>
                   <ul class="list-unstyled">
                     <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
@@ -122,7 +132,7 @@
                     <li class="mb-2"><a href="https://github.com/sponsors/twbs">Corporate sponsors</a></li>
                     <li class="mb-2"><a href="https://opencollective.com/bootstrap">Open Collective</a></li>
                   </ul>
-                </div>
+                </div> --}}
               </div>
             </div>
           </footer>

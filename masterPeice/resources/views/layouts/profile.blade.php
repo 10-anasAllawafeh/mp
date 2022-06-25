@@ -80,10 +80,10 @@
     <div class="offcanvas-body">
         <ul class="list-unstyled">
             <li class="nav-item active d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="job">Job</a>
             </li>
             {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -97,13 +97,13 @@
             </div>
             </li> --}}
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link disabled" href="#">My Information</a>
+            <a class="nav-link" href="/home">My Information</a>
             </li>
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link disabled" href="#">My Ratings</a>
+            <a class="nav-link" href="/job">My Ratings</a>
             </li>
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link disabled" href="#">Follow list</a>
+            <a class="nav-link" href="/">Follow list</a>
             </li>
             </ul>
     </div>
@@ -140,25 +140,24 @@
                     <li class="mb-2"><a href="">Swag Store</a></li>
                   </ul> -->
                 <!-- </div> -->
-                <div class="col-6 col-lg-2 offset-lg-3 mb-3">
+                <div class="col-6 col-lg-2 offset-lg-5 mb-3">
                   <h5>useful links</h5>
                   <ul class="list-unstyled">
-                    <li class="mb-2"><a href="/docs/5.2/getting-started/">Getting started</a></li>
-                    <li class="mb-2"><a href="/docs/5.2/examples/starter-template/">Starter template</a></li>
-                    <li class="mb-2"><a href="/docs/5.2/getting-started/webpack/">Webpack</a></li>
-                    <li class="mb-2"><a href="/docs/5.2/getting-started/parcel/">Parcel</a></li>
+                    <li class="mb-2"><a href="/">Home</a></li>
+                    <li class="mb-2"><a href="/about">About us</a></li>
+                    <li class="mb-2"><a href="/contact">Contact us</a></li>
                   </ul>
                 </div>
                 <div class="col-6 col-lg-2 mb-3">
                   <h5>Contact Information</h5>
                   <ul class="list-unstyled">
-                    <li class="mb-2"><a href="https://github.com/twbs/bootstrap">Bootstrap 5</a></li>
-                    <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap 4</a></li>
-                    <li class="mb-2"><a href="https://github.com/twbs/icons">Icons</a></li>
-                    <li class="mb-2"><a href="https://github.com/twbs/rfs">RFS</a></li>
+                    <li class="mb-2"><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="mb-2"><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li class="mb-2"><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li class="mb-2"><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
                   </ul>
                 </div>
-                <div class="col-6 col-lg-2 mb-3">
+                {{-- <div class="col-6 col-lg-2 mb-3">
                   <h5>Community</h5>
                   <ul class="list-unstyled">
                     <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
@@ -166,7 +165,7 @@
                     <li class="mb-2"><a href="https://github.com/sponsors/twbs">Corporate sponsors</a></li>
                     <li class="mb-2"><a href="https://opencollective.com/bootstrap">Open Collective</a></li>
                   </ul>
-                </div>
+                </div> --}}
               </div>
             </div>
           </footer>

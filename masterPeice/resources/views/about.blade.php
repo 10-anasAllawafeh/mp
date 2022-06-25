@@ -36,7 +36,7 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
                         <h6 class="text-primary text-uppercase mb-2">About Us</h6>
-                        <h1 class="display-6 mb-4">We Help The Youth To Make Their Environment A Better Place</h1>
+                        <h1 class="display-6 mb-4">We Help The Youth To create Their career Greater Choice</h1>
                         <p>Through our technology people build meaningful connections, do good things, and feel
                             healthier and happier as a result. We know people want to do things that improve how they
                             feel but don’t always know where to go or what to do</p>
