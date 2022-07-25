@@ -7,13 +7,15 @@
 @section('content')
     <div class="row bg-light">
         <div class="row col-lg-3 col-xl-3 col-md-10 col-sm-10 px-5 pt-5 d-grid justify-content-start">
-            <div class="col-12">
-                <h3>Categories</h3>
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                </ul>
+          <div class="col-12">
+            <h3>Categories</h3>
+            <ul>
+                @foreach ($categories as $category)
+                @if ($category->parent_id == NULL)
+                <li>{{$category->name}}</li>
+                @endif
+                @endforeach
+              </ul>
             </div>
             <div class="col-12">
                 <h3>Similar Search</h3>
@@ -34,59 +36,33 @@
                   </div>
                 <div>
                     <div class="row mt-4 d-flex justify-content-between">
-                        <h3>Most Viewed</h3>
-                        <div class="card col-lg-xl-2 col-md-6 col-sm-10" style="width: 12rem;">
-                            <img class="card-img-top" src={{ asset('img/handymen.png')}} alt="Card image cap">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                          </div>
-                          <div class="card col-lg-xl-2 col-md-6 col-sm-10" style="width: 12rem;">
-                            <img class="card-img-top" src={{ asset('img/handymen.png')}} alt="Card image cap">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                          </div>
-                          <div class="card col-lg-xl-2 col-md-6 col-sm-10" style="width: 12rem;">
-                            <img class="card-img-top" src={{ asset('img/handymen.png')}} alt="Card image cap">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                          </div>
+                        <h3>Popular Posts</h3>
+                        @foreach ($popularPosts as $post)
+                            <div class="card col-lg-xl-2 col-md-6 col-sm-10" style="width: 12rem; height:18rem; white-space: nowrap;
+                            overflow: hidden; text-overflow: ellipsis">
+                                <img class="card-img-top" src="/storage/{{$post->image}}" height="100px" alt="Card image cap">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{$post->title}}</h5>
+                                  <p class="card-text">{{$post->excerpt}}</p>
+                                  <a href="/post/id/{{$post->id}}" class="btn btn-primary">Continue reading</a>
+                                </div>
+                              </div>
+                        @endforeach
                     </div>
                     <div class="row mt-4 d-flex justify-content-between">
-                        <h3>Latest Works</h3>
-                        <div class="card col-lg-xl-2 col-md-6 col-sm-10" style="width: 12rem;">
-                            <img class="card-img-top" src={{ asset('img/handymen.png')}} alt="Card image cap">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                      <h3>Popular Posts</h3>
+                      @foreach ($latestPosts as $post)
+                          <div class="card col-lg-xl-2 col-md-6 col-sm-10" style="width: 12rem; height:18rem; white-space: nowrap;
+                          overflow: hidden; text-overflow: ellipsis">
+                              <img class="card-img-top" src="/storage/{{$post->image}}" height="100px" alt="Card image cap">
+                              <div class="card-body">
+                                <h5 class="card-title">{{$post->title}}</h5>
+                                <p class="card-text">{{$post->excerpt}}</p>
+                                <a href="/post/id/{{$post->id}}" class="btn btn-primary">Continue reading</a>
+                              </div>
                             </div>
-                          </div>
-                          <div class="card col-lg-xl-2 col-md-6 col-sm-10" style="width: 12rem;">
-                            <img class="card-img-top" src={{ asset('img/handymen.png')}} alt="Card image cap">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                          </div>
-                          <div class="card col-lg-xl-2 col-md-6 col-sm-10" style="width: 12rem;">
-                            <img class="card-img-top" src={{ asset('img/handymen.png')}} alt="Card image cap">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                          </div>
-                    </div>
+                      @endforeach
+                  </div>
                 </div>
             {{-- </div> --}}
         </div>
@@ -102,9 +78,9 @@
             <div class="col-12">
                 <h3>Around You</h3>
                 <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
+                  @foreach ($cityPosts as $post)
+                      <li>{{$post->title}}</li>
+                  @endforeach
                 </ul>
             </div>
         </div>

@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use TCG\Voyager\Voyager;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
 
 Auth::routes();
 
@@ -29,4 +29,9 @@ Route::get('/contact', function(){
 });
 Route::get('/about', function(){
     return view('about');
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });

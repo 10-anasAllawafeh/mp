@@ -55,35 +55,15 @@
 
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
     <div class="offcanvas-header">
-        {{-- <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5> --}}
-        <img src="https://th.bing.com/th/id/OIP.Os3dloCTc-JUqOagtZOXVAHaHr?pid=ImgDet&rs=1" width="50px" height="50px" alt="profile page">
-        <ul class="list-unstyled">
-        <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }}
-            </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </div>
-        </li>
-    </ul>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
         <ul class="list-unstyled">
             <li class="nav-item active d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Main page<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link" href="job">Job</a>
+            <a class="nav-link" href="/job">Job</a>
             </li>
             {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -103,7 +83,17 @@
             <a class="nav-link" href="/job">My Ratings</a>
             </li>
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link" href="/">Follow list</a>
+              <a class="nav-link" href="/">Follow list</a>
+            </li>
+            <li class="nav-item d-flex justify-content-center border bg-light py-2">
+              <a class="nav-link text-danger" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
             </li>
             </ul>
     </div>
@@ -143,7 +133,7 @@
                 <div class="col-6 col-lg-2 offset-lg-5 mb-3">
                   <h5>useful links</h5>
                   <ul class="list-unstyled">
-                    <li class="mb-2"><a href="/">Home</a></li>
+                    <li class="mb-2"><a href="/">Main Page</a></li>
                     <li class="mb-2"><a href="/about">About us</a></li>
                     <li class="mb-2"><a href="/contact">Contact us</a></li>
                   </ul>
@@ -170,5 +160,8 @@
             </div>
           </footer>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

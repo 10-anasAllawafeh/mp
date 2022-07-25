@@ -10,7 +10,8 @@
     <title>@yield('title')</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ mix('asset/js/app.js') }}" defer></script> --}}
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,7 +26,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -41,7 +42,7 @@
             <a class="nav-link" href="/contact">Contact US</a>
           </li>
               <li class="nav-item">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
           </li>
         <li class="nav-item mx-2">
           {{-- <!-- Authentication Links --> --}}
@@ -54,23 +55,15 @@
           @endif
         </li>
           @else
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
-                </a>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+            <li class="nav-item ">
+                    <a class="nav-link text-danger" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
-                                      document.getElementById('logout-form').submit();">
+                                 document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
-                    <a class="dropdown-item" href="{{ url('/home') }}">profile
-                    </a>
-  
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                </div>
             </li>
           @endguest
         </ul>        
@@ -84,7 +77,7 @@
 
         {{-- <footer class="bd-footer py-4 py-md-5 mt-5 bg-light"> --}}
           <footer class="bd-footer">
-            <div class=" py-4 py-md-5 px-5 px-md-1">
+            <div class=" py-2 py-md-3 px-5 px-md-1">
               <div class="row">
                 <div class="col-lg-3 mb-3">
                   <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="{{url('/')}}" aria-label="">
@@ -107,7 +100,7 @@
                     <li class="mb-2"><a href="">Swag Store</a></li>
                   </ul> -->
                 <!-- </div> -->
-                <div class="col-6 col-lg-2 offset-lg-5 mb-3">
+                <div class="col-6 col-lg-2 offset-lg-4 mt-5">
                   <h5>useful links</h5>
                   <ul class="list-unstyled">
                     <li class="mb-2"><a href="/">Home</a></li>
@@ -115,14 +108,14 @@
                     <li class="mb-2"><a href="/contact">Contact us</a></li>
                   </ul>
                 </div>
-                <div class="col-6 col-lg-2 mb-3">
+                <div class="col-6 col-lg-2 mt-5">
                   <h5>Contact Information</h5>
-                  <ul class="list-unstyled">
-                    <li class="mb-2"><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                    <li class="mb-2"><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                    <li class="mb-2"><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                    <li class="mb-2"><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                  </ul>
+                  <div class="d-flex justify-content-between">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                  </div>
                 </div>
                 {{-- <div class="col-6 col-lg-2 mb-3">
                   <h5>Community</h5>
