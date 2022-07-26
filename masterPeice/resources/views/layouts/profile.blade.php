@@ -48,6 +48,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+      #myForm{
+        display: none
+      }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-light ml-2 mr-2">
@@ -62,9 +68,11 @@
             <li class="nav-item active d-flex justify-content-center border bg-light py-2">
             <a class="nav-link" href="/">Main page<span class="sr-only">(current)</span></a>
             </li>
+            @if (Auth::user()->role_id == 3)
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
             <a class="nav-link" href="/job">Job</a>
             </li>
+            @endif
             {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
@@ -163,5 +171,19 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+  function openForm() {
+  document.getElementById("myForm").style.display = "block";
+  document.getElementById("openFormBtn").style.display = "none";
+  }
+
+  function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+  document.getElementById("openFormBtn").style.display = "block";
+  }
+  
+  document.getElementById("category").selectedIndex = -1;
+  document.getElementById("city").selectedIndex = -1;
+</script>
 </body>
 </html>

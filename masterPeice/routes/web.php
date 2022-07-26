@@ -21,9 +21,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/job', function(){
-    return view('job');
-});
+Route::get('/job', [App\Http\Controllers\HomeController::class, 'job']);
+Route::get('/addjob', [App\Http\Controllers\HomeController::class, 'addjob']);
 Route::get('/contact', function(){
     return view('contact');
 });

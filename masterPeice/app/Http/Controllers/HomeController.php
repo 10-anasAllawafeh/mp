@@ -30,6 +30,31 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function addjob(Request $request)
+    {
+        $file= $request->file('image');
+        $path= "";
+        if (!empty($file)) {
+            $filename= $file->getClientOriginalName();
+            $file-> move(public_path('/storage/users/June2022'), $filename);
+            $path='users/June2022/'.$filename;
+        }
+        $path;
+        $title=$request->input('title');
+        $excerpt=$request->input('excerpt');
+        $body=$request->input('body');
+        $city=$request->input('city');
+        $image=$path;
+        $category=$request->input('category');
+        DB::insert('INSERT INTO posts (auther_id, title, excerpt, body, city, image, category) VALUES(?,?,?,?,?,?)',[Auth::user()->id,$title,$excerpt,$body,$city,$image,$category]);
+        redirect('job')->with('message', 'Job Added Succefully');
+    }
+    public function job()
+    {
+        $jobs= DB::select('SELECT * FROM posts WHERE author_id=?;',[Auth::user()->id]);
+        $categories= DB::select('SELECT * FROM categories;');
+        return view('job',compact('jobs','categories'));
+    }
     public function welcome()
     {
 
