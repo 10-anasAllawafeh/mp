@@ -34,3 +34,5 @@ Route::get('/about', function(){
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::any('/edituser/{id}', [App\Http\Controllers\HomeController::class, 'edituser']);

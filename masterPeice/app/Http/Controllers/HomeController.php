@@ -36,8 +36,8 @@ class HomeController extends Controller
         $path= "";
         if (!empty($file)) {
             $filename= $file->getClientOriginalName();
-            $file-> move(public_path('/storage/users/June2022'), $filename);
-            $path='users/June2022/'.$filename;
+            $file-> move(public_path('/storage/posts/June2022'), $filename);
+            $path='posts/June2022/'.$filename;
         }
         $path;
         $title=$request->input('title');
@@ -66,5 +66,35 @@ class HomeController extends Controller
         $cityPosts=  DB::select('SELECT * FROM posts WHERE city=? LIMIT 3;',[ Auth::user()->city]);
 
         return view('welcome', compact('categories','popularPosts','latestPosts','cityPosts'));
+    }
+
+    public function edituser(Request $request, $id){
+
+        $file= $request->input('image');
+        $path= "";
+
+        if (!empty($file)) 
+        {
+            $filename= $file->getClientOriginalName();
+            $file -> move(public_path('storage/users/July2022'), $filename);
+            $path= "users/July2022".$filename;
+        }
+
+        $path;
+        $name= $request->input('name');
+        $email=$request->input('email');
+        $city=$request->input('userCity');
+        $phone=$request->input('phone');
+
+        if (!empty($file)) 
+        {
+            DB::update("INSERT INTO users (name,email,avatar,city,phone) VALUES ('$name','$email','$path','$city','$phone') WHERE id=$id");
+        } 
+        else 
+        {
+            DB::update('UPDATE users SET name=?, email=?, city=?, phone=? WHERE id=?;',[$name,$email,$city,$phone,$id]);
+        }
+
+        return redirect('/home')->with('status', 'Data Edited Succeffully');
     }
 }

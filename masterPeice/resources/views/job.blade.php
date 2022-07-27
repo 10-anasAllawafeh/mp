@@ -30,7 +30,8 @@
                     <textarea class="form-control" cols="10" rows="5"  id="body" name="body" value="{{ old('body') }}" required></textarea>
                 </div>
                 <div class="form-group col-3 offset-4">
-                    <select id="city" type="text" class="form-control form-select bg-white rounded form-control-md" name="city" value="{{ old('city') }}" required autocomplete="city">
+                    <label for="jobCity">Job City</label><br>
+                    <select id="jobCity" type="text" class="form-control form-select bg-white rounded form-control-md" name="city" value="{{ old('city') }}" required autocomplete="city">
                         <option value="Amman">Amman</option>
                         <option value="Aqaba">Aqaba</option>
                         <option value="Maan">Maan</option>

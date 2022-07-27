@@ -49,6 +49,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    {{-- Jquery  --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <style>
       #myForm{
         display: none
@@ -57,7 +60,7 @@
 </head>
 <body>
     <nav class="navbar navbar-light ml-2 mr-2">
-    <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" style="margin-top: -50px;"><i class="fas fa-bars"></i></button>
+    <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" style="margin-top: -20px;"><i class="fas fa-bars"></i></button>
 
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
     <div class="offcanvas-header">
@@ -183,7 +186,7 @@
   }
   
   document.getElementById("category").selectedIndex = -1;
-  document.getElementById("city").selectedIndex = -1;
+  document.getElementById("jobCity").selectedIndex = -1;
 </script>
 </body>
 </html>
