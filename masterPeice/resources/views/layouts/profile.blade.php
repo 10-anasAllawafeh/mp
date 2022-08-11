@@ -59,21 +59,21 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-light ml-2 mr-2">
-    <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" style="margin-top: -20px;"><i class="fas fa-bars"></i></button>
+    <nav class="navbar bg-warning ml-2 mr-2">
+    <button class="btn btn-outline-light navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" style="margin-top: -20px;"><i class="fas fa-bars"></i></button>
 
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
     <div class="offcanvas-header">
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn btn-outline-warning btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
         <ul class="list-unstyled">
             <li class="nav-item active d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link" href="/">Main page<span class="sr-only">(current)</span></a>
+            <a class="nav-link text-warning" href="/">Main page<span class="sr-only">(current)</span></a>
             </li>
             @if (Auth::user()->role_id == 3)
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link" href="/job">Job</a>
+            <a class="nav-link text-warning" href="/job">Job</a>
             </li>
             @endif
             {{-- <li class="nav-item dropdown">
@@ -88,13 +88,13 @@
             </div>
             </li> --}}
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link" href="/home">My Information</a>
+            <a class="nav-link text-warning" href="/home">My Information</a>
             </li>
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link" href="/job">My Ratings</a>
+            <a class="nav-link text-warning" href="/job">My Ratings</a>
             </li>
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
-              <a class="nav-link" href="/">Follow list</a>
+              <a class="nav-link text-warning" href="/">Follow list</a>
             </li>
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
               <a class="nav-link text-danger" href="{{ route('logout') }}"
@@ -117,59 +117,151 @@
 <main>
 @yield('content')
 </main>
-          <footer class="bd-footer">
-            <div class="container py-4 py-md-5 px-4 px-md-3">
-              <div class="row">
-                <div class="col-lg-3 mb-3">
-                  <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="{{url('/')}}" aria-label="">
-                  <img src="img/Free_Sample_By_Wix (1).jfif" width="200" height="200" alt="logo">
-                  </a>
-                  <!-- <ul class="list-unstyled small text-muted">
-                    <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.2/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
-                    <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-                    <li class="mb-2">Currently v5.2.0-beta1.</li>
-                  </ul> -->
-                </div>
-                <!-- <div class="col-6 col-lg-2 offset-lg-1 mb-3"> -->
-                  <!-- <h5>Links</h5>
-                  <ul class="list-unstyled">
-                    <li class="mb-2"><a href="/">Home</a></li>
-                    <li class="mb-2"><a href="/docs/5.2/">Docs</a></li>
-                    <li class="mb-2"><a href="/docs/5.2/examples/">Examples</a></li>
-                    <li class="mb-2"><a href="https://themes.getbootstrap.com/">Themes</a></li>
-                    <li class="mb-2"><a href="https://blog.getbootstrap.com/">Blog</a></li>
-                    <li class="mb-2"><a href="">Swag Store</a></li>
-                  </ul> -->
-                <!-- </div> -->
-                <div class="col-6 col-lg-2 offset-lg-5 mb-3">
-                  <h5>useful links</h5>
-                  <ul class="list-unstyled">
-                    <li class="mb-2"><a href="/">Main Page</a></li>
-                    <li class="mb-2"><a href="/about">About us</a></li>
-                    <li class="mb-2"><a href="/contact">Contact us</a></li>
-                  </ul>
-                </div>
-                <div class="col-6 col-lg-2 mb-3">
-                  <h5>Contact Information</h5>
-                  <ul class="list-unstyled">
-                    <li class="mb-2"><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                    <li class="mb-2"><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                    <li class="mb-2"><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                    <li class="mb-2"><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                  </ul>
-                </div>
-                {{-- <div class="col-6 col-lg-2 mb-3">
-                  <h5>Community</h5>
-                  <ul class="list-unstyled">
-                    <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
-                    <li class="mb-2"><a href="https://github.com/twbs/bootstrap/discussions">Discussions</a></li>
-                    <li class="mb-2"><a href="https://github.com/sponsors/twbs">Corporate sponsors</a></li>
-                    <li class="mb-2"><a href="https://opencollective.com/bootstrap">Open Collective</a></li>
-                  </ul>
-                </div> --}}
+    <!-- Footer -->
+    <footer class="bg-warning text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+
+          <!-- Twitter -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
+
+          <!-- Google -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+            ><i class="fab fa-google"></i
+          ></a>
+
+          <!-- Instagram -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+
+          <!-- Linkedin -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+
+          <!-- Github -->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Form -->
+        <section class="">
+          <form action="">
+            <!--Grid row-->
+            <div class="row d-flex justify-content-center">
+              <!--Grid column-->
+              <div class="col-auto">
+                <p class="pt-2">
+                  <strong>Sign up for our newsletter</strong>
+                </p>
               </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div class="form-outline form-white mb-4">
+                  <input type="email" id="form5Example21" class="form-control" />
+                  <label class="form-label" for="form5Example21">Email address</label>
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-auto">
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-outline-light mb-4">
+                  Subscribe
+                </button>
+              </div>
+              <!--Grid column-->
             </div>
-          </footer>
+            <!--Grid row-->
+          </form>
+        </section>
+        <!-- Section: Form -->
+
+        <!-- Section: Text -->
+        <section class="mb-4">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+            repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+            eum harum corrupti dicta, aliquam sequi voluptate quas.
+          </p>
+        </section>
+        <!-- Section: Text -->
+
+        <!-- Section: Links -->
+        {{-- <section class="">
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Links</h5>
+
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#!" class="text-white">Link 1</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-white">Link 2</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-white">Link 6</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-white">Link 4</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Links</h5>
+
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#!" class="text-white">Link 1</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-white">Link 2</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-white">Link 3</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-white">Link 4</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+      </div>
+      <!-- Grid container --> --}}
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="/">Anas Allawafeh</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

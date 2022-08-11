@@ -30,33 +30,33 @@
 </head>
 <body>
     <div id="app">
-      <nav class="navbar navbar-light ml-2 mr-2">
+      <nav class="navbar navbar-light bg-warning ml-2 mr-2 mb-5">
         <a class="navbar-brand pl-2 pt-0" href="{{url('/')}}">
           <img src="{{ asset('img/Free_Sample_By_Wix (1).jfif')}}" width="100" height="100" alt="logo">
         </a>
         <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a class="nav-link" href="/about">About Us</a>
+            <a class="nav-link text-white" href="/home">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact US</a>
+            <a class="nav-link text-white" href="/about">About Us</a>
           </li>
-              <li class="nav-item">
-            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/contact">Contact US</a>
           </li>
         <li class="nav-item mx-2">
           {{-- <!-- Authentication Links --> --}}
           @guest
           @if (Route::has('login'))
-            <button class="btn btn-outline-warning " type="submit"><a href="{{ route('login') }}">{{ __('Login') }}</a></button>
+            <button class="btn btn-outline-light" type="submit"><a class=" text-white text-decoration-none" href="{{ route('login') }}">{{ __('Login') }}</a></button>
           @endif
           @if (Route::has('register'))
-            <button class="btn btn-outline-warning " type="submit"><a href="{{ route('register') }}">{{ __('Register') }}</a></button>
+            <button class="btn btn-outline-light" type="submit"><a class=" text-white text-decoration-none" href="{{ route('register') }}">{{ __('Register') }}</a></button>
           @endif
         </li>
           @else
             <li class="nav-item ">
-                    <a class="nav-link text-danger" href="{{ route('logout') }}"
+                    <a class="nav-link text-white text-danger" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
@@ -75,22 +75,22 @@
             @yield('content')
         </main>
 
-        {{-- <footer class="bd-footer py-4 py-md-5 mt-5 bg-light"> --}}
-          <footer class="bd-footer">
+        {{-- <footer class="bd-footer py-4 py-md-5 mt-5 bg-light">
+          <footer class="bd-footer bg-dark">
             <div class=" py-2 py-md-3 px-5 px-md-1">
-              <div class="row">
+              <div class="row text-white">
                 <div class="col-lg-3 mb-3">
                   <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="{{url('/')}}" aria-label="">
                   <img src="img/Free_Sample_By_Wix (1).jfif" width="200" height="200" alt="logo">
                   </a>
-                  <!-- <ul class="list-unstyled small text-muted">
+                   <ul class="list-unstyled small text-muted">
                     <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.2/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
                     <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
                     <li class="mb-2">Currently v5.2.0-beta1.</li>
-                  </ul> -->
+                  </ul> 
                 </div>
-                <!-- <div class="col-6 col-lg-2 offset-lg-1 mb-3"> -->
-                  <!-- <h5>Links</h5>
+                 <div class="col-6 col-lg-2 offset-lg-1 mb-3"> 
+                   <h5>Links</h5>
                   <ul class="list-unstyled">
                     <li class="mb-2"><a href="/">Home</a></li>
                     <li class="mb-2"><a href="/docs/5.2/">Docs</a></li>
@@ -98,12 +98,12 @@
                     <li class="mb-2"><a href="https://themes.getbootstrap.com/">Themes</a></li>
                     <li class="mb-2"><a href="https://blog.getbootstrap.com/">Blog</a></li>
                     <li class="mb-2"><a href="">Swag Store</a></li>
-                  </ul> -->
-                <!-- </div> -->
-                <div class="col-6 col-lg-2 offset-lg-4 mt-5">
+                  </ul> 
+                 </div> 
+                <div class="col-6 col-lg-2 offset-lg-4 mt-5 ">
                   <h5>useful links</h5>
                   <ul class="list-unstyled">
-                    <li class="mb-2"><a href="/">Home</a></li>
+                    <li class="mb-2 text-light"><a href="/">Home</a></li>
                     <li class="mb-2"><a href="/about">About us</a></li>
                     <li class="mb-2"><a href="/contact">Contact us</a></li>
                   </ul>
@@ -117,7 +117,7 @@
                     <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                   </div>
                 </div>
-                {{-- <div class="col-6 col-lg-2 mb-3">
+                 <div class="col-6 col-lg-2 mb-3">
                   <h5>Community</h5>
                   <ul class="list-unstyled">
                     <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
@@ -125,10 +125,155 @@
                     <li class="mb-2"><a href="https://github.com/sponsors/twbs">Corporate sponsors</a></li>
                     <li class="mb-2"><a href="https://opencollective.com/bootstrap">Open Collective</a></li>
                   </ul>
-                </div> --}}
+                </div> 
               </div>
             </div>
-          </footer>
+          </footer> --}}
+          <!-- Footer -->
+<footer class="bg-warning text-center text-white mt-5">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button" target="_blank"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example21" class="form-control" />
+              <label class="form-label" for="form5Example21">Email address</label>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-outline-light mb-4">
+              Subscribe
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+        eum harum corrupti dicta, aliquam sequi voluptate quas.
+      </p>
+    </section>
+    <!-- Section: Text -->
+
+    <!-- Section: Links -->
+    {{-- <section class="">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 6</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+    <!-- Section: Links -->
+  </div>
+  <!-- Grid container --> --}}
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-white" href="/">Anas Allawafeh</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
     </div>
 </body>
 </html>
