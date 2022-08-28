@@ -30,28 +30,28 @@
 </head>
 <body>
     <div id="app">
-      <nav class="navbar navbar-light bg-warning ml-2 mr-2 mb-5">
+      <nav class="navbar navbar-light bg-light ml-2 mr-2">
         <a class="navbar-brand pl-2 pt-0" href="{{url('/')}}">
-          <img src="{{ asset('img/Free_Sample_By_Wix (1).jfif')}}" width="100" height="100" alt="logo">
+          <img src="{{ asset('img/Free_Sample_By_Wix__1_-removebg-preview.png')}}" width="75" height="75" alt="logo">
         </a>
         <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a class="nav-link text-white" href="/home">Home <span class="sr-only">(current)</span></a>
+            <a href="/" class="nav-link {{ Request::is('/') ? 'text-warning' : null }}">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="/about">About Us</a>
+            <a class="nav-link {{ Request::is('about') ? 'text-warning' : null }}" href="/about">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="/contact">Contact US</a>
+            <a class="nav-link {{ Request::is('contact') ? 'text-warning' : null }}" href="/contact">Contact US</a>
           </li>
         <li class="nav-item mx-2">
           {{-- <!-- Authentication Links --> --}}
           @guest
           @if (Route::has('login'))
-            <button class="btn btn-outline-light" type="submit"><a class=" text-white text-decoration-none" href="{{ route('login') }}">{{ __('Login') }}</a></button>
+            <button class="btn btn-outline-warning" type="submit"><a class="text-decoration-none" href="{{ route('login') }}">{{ __('Login') }}</a></button>
           @endif
           @if (Route::has('register'))
-            <button class="btn btn-outline-light" type="submit"><a class=" text-white text-decoration-none" href="{{ route('register') }}">{{ __('Register') }}</a></button>
+            <button class="btn btn-outline-warning" type="submit"><a class="text-decoration-none" href="{{ route('register') }}">{{ __('Register') }}</a></button>
           @endif
         </li>
           @else

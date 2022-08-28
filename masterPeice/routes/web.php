@@ -16,7 +16,7 @@ use TCG\Voyager\Voyager;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
+Route::get('/', [App\Http\Controllers\NoAuthController::class, 'welcome']);
 
 Auth::routes();
 

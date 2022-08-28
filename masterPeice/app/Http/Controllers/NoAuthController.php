@@ -21,7 +21,12 @@ class NoAuthController extends Controller
         $latestPosts= DB::select('SELECT * FROM posts
                                   ORDER BY id DESC
                                   LIMIT 3;');
-        $cityPosts=  DB::select('SELECT * FROM posts WHERE city=? LIMIT 3;',[ Auth::user()->city]);
+        if (Auth::user()) {
+            $cityPosts=  DB::select('SELECT * FROM posts WHERE city=? LIMIT 3;',[ Auth::user()->city]);
+        }
+        else{
+            $cityPosts= [];
+        };
 
         return view('welcome', compact('categories','popularPosts','latestPosts','cityPosts'));
     }
