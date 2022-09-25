@@ -22,7 +22,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/job', [App\Http\Controllers\HomeController::class, 'job']);
+Route::get('/category/{category_id}', [App\Http\Controllers\NoAuthController::class, 'category']);
+Route::get('/post/id/{post_id}', [App\Http\Controllers\NoAuthController::class, 'post']);
+Route::get('/poster/{poster_id}', [App\Http\Controllers\NoAuthController::class, 'poster']);
 Route::get('/addjob', [App\Http\Controllers\HomeController::class, 'addjob']);
+Route::post('/joboffer', [App\Http\Controllers\HomeController::class, 'jobOffer']);
+Route::any('/approvedjob', [App\Http\Controllers\HomeController::class, 'approvedJob']);
+Route::any('/approvejob/{id}', [App\Http\Controllers\HomeController::class, 'approveJob']);
+Route::any('/declinejob/{id}', [App\Http\Controllers\HomeController::class, 'declineJob']);
+Route::any('/confirmjob/{id}', [App\Http\Controllers\HomeController::class, 'approvedJob']);
 Route::get('/contact', function(){
     return view('contact');
 });

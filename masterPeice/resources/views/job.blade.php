@@ -1,7 +1,14 @@
 @extends('layouts/profile')
 @section('content')
+<div class="container mt-0 text-dark px-3">
+    @if (session('message'))
+        <div class="alert alert-success" role="alert">
+            {{ session('message') }}
+        </div>
+    @endif
+</div>
 <div class="container">
-    <button class="form-control btn btn-warning" onclick="openForm()" id="openFormBtn" style="width: 12rem">Add new Job</button>
+    <button class="form-control btn btn-warning" onclick="openForm()" id="openFormBtn" style="width: 12rem">Add new Post</button>
     <div class="form-popup" id="myForm">
         <form action="/addjob" method="" enctype="multipart/form-data">
             <div class="row d-grid">
@@ -65,6 +72,26 @@
                         <h5 class="card-title">{{$post->title}}</h5>
                         <p class="card-text">{{$post->excerpt}}</p>
                         <a href="/post/id/{{$post->id}}" class="btn btn-primary">Continue reading</a>
+                    </div>
+                </div>
+        @endforeach
+    </div>
+    <div class="row mt-4 d-flex justify-content-between">
+        <h3>My Jobs</h3>
+
+        <h5>Job Offers</h5>
+        @foreach ($jobOffers as $item)
+                <div class="card col-lg-xl-4 col-md-6 col-sm-10" style="width:fit-content; height:18rem; white-space: nowrap;
+                overflow: hidden; text-overflow: ellipsis">
+                    <div class="card-body">
+                        {{-- <h5 class="card-title">{{$item->title}}</h5> --}}
+                        <p class="card-text">Customer Name: {{$item->name}}</p>
+                        <p class="card-text">Job Description: {{$item->job_description}}</p>
+                        <p class="card-text">Job Date :{{$item->job_time}}</p>
+                        <p class="card-text">Job price :{{$item->job_price}}</p>
+                        <p class="card-text">Job location :{{$item->city}}</p>
+                        <a href="/approvejob/{{$item->id}}" class="btn btn-success">Approve</a>
+                        <a href="/declinejob/{{$item->id}}" class="btn btn-danger">Decline</a>
                     </div>
                 </div>
         @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Joboffer;
 use Illuminate\Http\Request;
 use App\Models\User;
 use TCG\Voyager\Models\Category;
@@ -46,15 +47,20 @@ class HomeController extends Controller
         $city=$request->input('city');
         $image=$path;
         $category=$request->input('category');
-        DB::insert('INSERT INTO posts (auther_id, title, excerpt, body, city, image, category) VALUES(?,?,?,?,?,?)',[Auth::user()->id,$title,$excerpt,$body,$city,$image,$category]);
-        redirect('job')->with('message', 'Job Added Succefully');
+        DB::insert('INSERT INTO posts (author_id, title, excerpt, body, city, image, category_id) VALUES(?,?,?,?,?,?,?)',[Auth::user()->id,$title,$excerpt,$body,$city,$image,$category]);
+        return redirect()->back()->with('message', 'Job Added Succefully');
     }
     public function job()
     {
         $jobs= DB::select('SELECT * FROM posts WHERE author_id=?;',[Auth::user()->id]);
         $categories= DB::select('SELECT * FROM categories;');
-        return view('job',compact('jobs','categories'));
+        // $jobOffers=Joboffer::where('worker_id', '=', Auth::id());
+        // $jobOffers=DB::table('Joboffers')->where('worker_id', '=', Auth::id());
+        $jobOffers=DB::select('SELECT Joboffers.id,Joboffers.job_time,Joboffers.job_description,Joboffers.job_price,users.name,users.city FROM Joboffers RIGHT JOIN users ON users.id=joboffers.customer_id WHERE job_status="pending" AND worker_id=?',[Auth::id()]);
+        // dd($jobOffers);
+        return view('job',compact('jobs','categories','jobOffers'));
     }
+
     public function welcome()
     {
 
@@ -96,5 +102,40 @@ class HomeController extends Controller
         }
 
         return redirect('/home')->with('status', 'Data Edited Succeffully');
+    }
+
+    function jobOffer(){
+        Joboffer::create([
+            'worker_id' =>request('worker_id'),
+            'customer_id' =>Auth::id(),
+            'job_description' =>request('description'),
+            'job_time' =>request('timing'),
+            'job_price' =>request('pricing'),
+        ]);
+        return redirect()->with('messeage','Your offer has been submitted,please wait the worker reply');
+    }
+    function approveJob($id){
+        DB::update('UPDATE Joboffers SET job_status="approved" WHERE id=?',[$id]);
+        // $job=DB::select('SELECT * FROM Joboffers WHERE id=?',[$id]);
+        // dd($job);
+        return redirect()->back()->with('message','Job Approved Succefully');
+
+    }
+    function declineJob($id){
+        DB::update('UPDATE Joboffers SET job_status="declined" WHERE id=?',[$id]);
+        // $job=DB::select('SELECT * FROM Joboffers WHERE id=?',[$id]);
+        // dd($job);
+        return redirect()->back()->with('message','Job declined Succefully');
+
+    }
+    function approvedJob(){
+        $jobOffers=[];
+        if (Auth::user()->role_id == 3) {
+            $jobOffers=DB::select('SELECT Joboffers.id,Joboffers.job_time,Joboffers.job_description,Joboffers.job_price,users.name,users.city FROM Joboffers RIGHT JOIN users ON users.id=joboffers.customer_id WHERE job_status="approved" AND worker_id=?',[Auth::id()]);
+        } else {
+            $jobOffers=DB::select('SELECT Joboffers.id,Joboffers.job_time,Joboffers.job_description,Joboffers.job_price,users.name,users.city FROM Joboffers RIGHT JOIN users ON users.id=joboffers.worker_id WHERE job_status="approved" AND worker_id=?',[Auth::id()]);
+        }
+        
+        return view('approvedjobs',compact('jobOffers'));
     }
 }
