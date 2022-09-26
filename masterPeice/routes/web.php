@@ -29,8 +29,9 @@ Route::get('/addjob', [App\Http\Controllers\HomeController::class, 'addjob']);
 Route::post('/joboffer', [App\Http\Controllers\HomeController::class, 'jobOffer']);
 Route::any('/approvedjob', [App\Http\Controllers\HomeController::class, 'approvedJob']);
 Route::any('/approvejob/{id}', [App\Http\Controllers\HomeController::class, 'approveJob']);
+Route::any('/donejob', [App\Http\Controllers\HomeController::class, 'doneJob']);
 Route::any('/declinejob/{id}', [App\Http\Controllers\HomeController::class, 'declineJob']);
-Route::any('/confirmjob/{id}', [App\Http\Controllers\HomeController::class, 'approvedJob']);
+Route::any('/confirmjob/{id}', [App\Http\Controllers\HomeController::class, 'confirmJob']);
 Route::get('/contact', function(){
     return view('contact');
 });

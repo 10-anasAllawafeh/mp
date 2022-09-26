@@ -1,0 +1,105 @@
+body {
+    background:url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg');
+    margin:0px;
+    font-family: 'Ubuntu', sans-serif;
+      /* background-size: 100% 110%; */
+  }
+  h1, h2, h3, h4, h5, h6, a {
+    margin:0; padding:0;
+  }
+  #title{
+    font-size: 4rem;
+  }
+  .login {
+    margin:0 auto;
+    max-width:500px;
+  }
+  .login-header {
+    color:#fff;
+    text-align:center;
+    font-size:300%;
+  }
+  .login-form h3 {
+    text-align:left;
+    margin-left:40px;
+    color:#fff;
+  }
+  .login-form {
+    box-sizing:border-box;
+    padding-top:15px;
+      padding-bottom:10%;
+    margin:5% auto;
+    text-align:center;
+  }
+  .login input[type="email"],
+  .login input[type="text"],
+  .login input[type="password"],
+  select
+   {
+    max-width:400px;
+    width: 80%;
+    line-height:2em;
+    font-family: 'Ubuntu', sans-serif;
+    margin:1em 2em;
+    border-radius:5px;
+    border:2px solid #f2f2f2;
+    outline:none;
+    padding-left:10px;
+  }
+  .login-form input[type="submit"] {
+    height:fit-content;
+    width:30%;
+    background:#fff;
+    border:1px solid #f2f2f2;
+    border-radius:25px;
+    color: slategrey;
+    text-transform:uppercase;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.5rem;
+    cursor:pointer;
+  }
+  .sign-up{
+    color:#f2f2f2;
+    /* margin-left:-70%; */
+    cursor:pointer;
+    text-decoration:underline;
+    font-size: 1rem;
+  }
+  .no-access {
+    color:#E86850;
+    margin:20px 0px 20px -57%;
+    text-decoration:underline;
+    cursor:pointer;
+    font-size: 1rem;
+  }
+  .try-again {
+    color:#f2f2f2;
+    text-decoration:underline;
+    cursor:pointer;
+  }
+  
+  /*Media Querie*/
+  @media only screen and (min-width : 150px) and (max-width : 530px){
+    #title{
+        margin-top: 5%;
+    }
+    .login-form h3 {
+      text-align:center;
+      margin:0;
+    }
+    .sign-up, .no-access {
+      margin:10px 0;
+    }
+    .login-button {
+      margin-bottom:10px;
+    }
+    .login-form input[type="submit"] {
+        font-size: 1rem;
+    }
+    .sign-up,.no-access{
+        font-size: initial;
+    }
+    .no-access{
+        color: #f2f2f2;
+    }
+  }

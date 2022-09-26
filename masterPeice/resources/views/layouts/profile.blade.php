@@ -53,13 +53,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <style>
+      body{
+        background: url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg');
+      }
       #myForm{
         display: none
       }
     </style>
 </head>
 <body>
-    <nav class="navbar bg-warning ml-2 mr-2">
+    <button class="btn rounded-circle btn-xl border-0 bg-white" id="scrollbtn" onclick="scrollUp()" style="display:none;position:fixed;bottom:40px;right:40px;color:rgb(0, 0, 0);textAlign:center;backgroundColor:#ffffff;zIndex:999;">
+      <i class="fa-solid fa-angles-up fa-xl"></i>
+    </button>
+    <nav class="navbar ml-2 mr-2">
     <button class="btn btn-outline-light navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" style="margin-top: -20px;"><i class="fas fa-bars"></i></button>
 
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -71,27 +77,19 @@
             <li class="nav-item active d-flex justify-content-center border bg-light py-2">
             <a class="nav-link text-warning" href="/">Main page<span class="sr-only">(current)</span></a>
             </li>
-            @if (Auth::user()->role_id == 3)
-            <li class="nav-item d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link text-warning" href="/job">Job</a>
-            </li>
-            @endif
-            {{-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-            </li> --}}
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
             <a class="nav-link text-warning" href="/home">My Information</a>
             </li>
+            @if (Auth::user()->role_id == 3)
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
-            <a class="nav-link text-warning" href="/job">My Ratings</a>
+            <a class="nav-link text-warning" href="/job">Job Offers</a>
+            </li>
+            @endif
+            <li class="nav-item d-flex justify-content-center border bg-light py-2">
+            <a class="nav-link text-warning" href="/approvedjob">In Process</a>
+            </li>
+            <li class="nav-item d-flex justify-content-center border bg-light py-2">
+            <a class="nav-link text-warning" href="/donejob">My Ratings</a>
             </li>
             <li class="nav-item d-flex justify-content-center border bg-light py-2">
               <a class="nav-link text-warning" href="/">Follow list</a>
@@ -118,7 +116,7 @@
 @yield('content')
 </main>
     <!-- Footer -->
-    <footer class="bg-warning text-center text-white">
+    <footer class="bg-dark text-center text-white" style="width:100%">
       <!-- Grid container -->
       <div class="container p-4">
         <!-- Section: Social media -->
@@ -200,60 +198,6 @@
             eum harum corrupti dicta, aliquam sequi voluptate quas.
           </p>
         </section>
-        <!-- Section: Text -->
-
-        <!-- Section: Links -->
-        {{-- <section class="">
-          <!--Grid row-->
-          <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
-
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#!" class="text-white">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 6</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 4</a>
-                </li>
-              </ul>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Links</h5>
-
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#!" class="text-white">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Link 4</a>
-                </li>
-              </ul>
-            </div>
-            <!--Grid column-->
-          </div>
-          <!--Grid row-->
-        </section>
-        <!-- Section: Links -->
-      </div>
-      <!-- Grid container --> --}}
-
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2020 Copyright:
@@ -263,7 +207,7 @@
     </footer>
     <!-- Footer -->
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>

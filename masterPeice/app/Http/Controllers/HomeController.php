@@ -130,12 +130,47 @@ class HomeController extends Controller
     }
     function approvedJob(){
         $jobOffers=[];
-        if (Auth::user()->role_id == 3) {
-            $jobOffers=DB::select('SELECT Joboffers.id,Joboffers.job_time,Joboffers.job_description,Joboffers.job_price,users.name,users.city FROM Joboffers RIGHT JOIN users ON users.id=joboffers.customer_id WHERE job_status="approved" AND worker_id=?',[Auth::id()]);
-        } else {
-            $jobOffers=DB::select('SELECT Joboffers.id,Joboffers.job_time,Joboffers.job_description,Joboffers.job_price,users.name,users.city FROM Joboffers RIGHT JOIN users ON users.id=joboffers.worker_id WHERE job_status="approved" AND worker_id=?',[Auth::id()]);
+        if (Auth::user()->role_id == 3) 
+        {
+            $jobOffers=DB::select('SELECT Joboffers.id,Joboffers.job_time,Joboffers.job_description,Joboffers.job_price,users.name,users.city,users.phone FROM Joboffers RIGHT JOIN users ON users.id=joboffers.customer_id WHERE worker_rate IS NULL AND job_status="approved" AND worker_id=?',[Auth::id()]);
+        } 
+        else 
+        {
+            $jobOffers=DB::select('SELECT Joboffers.id,Joboffers.job_time,Joboffers.job_description,Joboffers.job_price,users.name,users.city,users.phone FROM Joboffers RIGHT JOIN users ON users.id=joboffers.worker_id WHERE customer_rate IS NULL AND job_status="approved" AND customer_id=?',[Auth::id()]);
+            // dd($jobOffers);
         }
-        
         return view('approvedjobs',compact('jobOffers'));
+    }
+    function confirmJob($id){
+        if (Auth::user()->role_id == 3) 
+        {
+            Joboffer::where('id',$id)->update([
+                'worker_note'=>request('note'),
+                'worker_rate'=>request('rate'),
+            ]);
+            Joboffer::where('id',$id)->where('customer_rate','!=',null)->update([
+            'job_status'=>"done",
+            ]);
+        } 
+        else 
+        {
+            Joboffer::where('id',$id)->update([
+                'customer_note'=>request('note'),
+                'customer_rate'=>request('rate'),
+            ]);
+            Joboffer::where('id',$id)->where('worker_rate','!=',null)->update([
+                'job_status'=>"done",
+            ]);
+        }
+        return redirect()->back()->with('message','Your Note sent successfully');
+    }
+    function doneJob(){
+        $jobs=[];
+        if (Auth::user()->role_id == 3) {
+            $jobs=DB::select('SELECT * FROM joboffers WHERE job_status="done" AND customer_id=?',[Auth::id()]);
+        } else {
+            $jobs=DB::select('SELECT * FROM joboffers WHERE job_status="done" AND customer_id=?',[Auth::id()]);
+        }
+        return view('donejob',compact('jobs'));
     }
 }

@@ -19,6 +19,7 @@
 
     {{-- font Awesome --}}
     <script src="https://kit.fontawesome.com/8fdd3e44f7.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ccfa87eec6.js" crossorigin="anonymous"></script>
     
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -28,31 +29,43 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <style>
+      body{
+        background-image: url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg');
+        background-repeat: no-repeat;
+        background-size:cover;
+      }
+    </style>
 </head>
-<body>
+<body onscroll="scrollFunction()">
     <div id="app">
-      <nav class="navbar navbar-light bg-light ml-2 mr-2">
+      <button class="btn rounded-circle btn-xl border-0 bg-white" id="scrollbtn" onclick="scrollUp()" style="display:none;position:fixed;bottom:40px;right:40px;color:rgb(0, 0, 0);textAlign:center;backgroundColor:#ffffff;zIndex:999;">
+      <i class="fa-solid fa-angles-up fa-xl"></i>
+      </button>
+      <nav class="navbar navbar-light px-0" 
+      {{-- style="background-color: rgb(0 0 0 / 0%) !important;" --}}
+      >
         <a class="navbar-brand pl-2 pt-0" href="{{url('/')}}">
           <img src="{{ asset('img/Free_Sample_By_Wix__1_-removebg-preview.png')}}" width="75" height="75" alt="logo">
         </a>
         <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a href="/" class="nav-link {{ Request::is('/') ? 'text-warning' : null }}">Home <span class="sr-only">(current)</span></a>
+            <a href="/" class="nav-link {{ Request::is('/') ? 'text-white' : 'text-dark' }}"><h4> Home <span class="sr-only">(current)</span></h4></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('about') ? 'text-warning' : null }}" href="/about">About Us</a>
+            <a class="nav-link {{ Request::is('about') ? 'text-white' : 'text-dark' }}" href="/about"><h4>About Us</h4></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('contact') ? 'text-warning' : null }}" href="/contact">Contact US</a>
+            <a class="nav-link {{ Request::is('contact') ? 'text-white' : 'text-dark' }}" href="/contact"><h4>Contact US</h4></a>
           </li>
           <li class="nav-item mx-2">
             {{-- <!-- Authentication Links --> --}}
             @guest
             @if (Route::has('login'))
-            <button class="btn btn-outline-warning" type="submit"><a class="text-decoration-none" href="{{ route('login') }}">{{ __('Login') }}</a></button>
+            <button class="btn btn-outline-warning" type="submit"><a class="text-decoration-none" href="{{ route('login') }}"><h4 class="text-dark">{{ __('Login') }}</h4></a></button>
             @endif
             @if (Route::has('register'))
-            <button class="btn btn-outline-warning" type="submit"><a class="text-decoration-none" href="{{ route('register') }}">{{ __('Register') }}</a></button>
+            <button class="btn btn-outline-warning" type="submit"><a class="text-decoration-none" href="{{ route('register') }}"><h4 class="text-dark">{{ __('Sign Up') }}</h4></a></button>
             @endif
           </li>
           @else
@@ -78,63 +91,8 @@
           <main>
             @yield('content')
         </main>
-
-        {{-- <footer class="bd-footer py-4 py-md-5 mt-5 bg-light">
-          <footer class="bd-footer bg-dark">
-            <div class=" py-2 py-md-3 px-5 px-md-1">
-              <div class="row text-white">
-                <div class="col-lg-3 mb-3">
-                  <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="{{url('/')}}" aria-label="">
-                  <img src="img/Free_Sample_By_Wix (1).jfif" width="200" height="200" alt="logo">
-                  </a>
-                   <ul class="list-unstyled small text-muted">
-                    <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.2/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
-                    <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-                    <li class="mb-2">Currently v5.2.0-beta1.</li>
-                  </ul> 
-                </div>
-                 <div class="col-6 col-lg-2 offset-lg-1 mb-3"> 
-                   <h5>Links</h5>
-                  <ul class="list-unstyled">
-                    <li class="mb-2"><a href="/">Home</a></li>
-                    <li class="mb-2"><a href="/docs/5.2/">Docs</a></li>
-                    <li class="mb-2"><a href="/docs/5.2/examples/">Examples</a></li>
-                    <li class="mb-2"><a href="https://themes.getbootstrap.com/">Themes</a></li>
-                    <li class="mb-2"><a href="https://blog.getbootstrap.com/">Blog</a></li>
-                    <li class="mb-2"><a href="">Swag Store</a></li>
-                  </ul> 
-                 </div> 
-                <div class="col-6 col-lg-2 offset-lg-4 mt-5 ">
-                  <h5>useful links</h5>
-                  <ul class="list-unstyled">
-                    <li class="mb-2 text-light"><a href="/">Home</a></li>
-                    <li class="mb-2"><a href="/about">About us</a></li>
-                    <li class="mb-2"><a href="/contact">Contact us</a></li>
-                  </ul>
-                </div>
-                <div class="col-6 col-lg-2 mt-5">
-                  <h5>Contact Information</h5>
-                  <div class="d-flex justify-content-between">
-                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                  </div>
-                </div>
-                 <div class="col-6 col-lg-2 mb-3">
-                  <h5>Community</h5>
-                  <ul class="list-unstyled">
-                    <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
-                    <li class="mb-2"><a href="https://github.com/twbs/bootstrap/discussions">Discussions</a></li>
-                    <li class="mb-2"><a href="https://github.com/sponsors/twbs">Corporate sponsors</a></li>
-                    <li class="mb-2"><a href="https://opencollective.com/bootstrap">Open Collective</a></li>
-                  </ul>
-                </div> 
-              </div>
-            </div>
-          </footer> --}}
           <!-- Footer -->
-<footer class="bg-warning text-center text-white mt-5">
+<footer class="bg-dark text-center text-white mt-5">
   <!-- Grid container -->
   <div class="container p-4">
     <!-- Section: Social media -->
@@ -216,62 +174,9 @@
         eum harum corrupti dicta, aliquam sequi voluptate quas.
       </p>
     </section>
-    <!-- Section: Text -->
-
-    <!-- Section: Links -->
-    {{-- <section class="">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 6</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-      </div>
-      <!--Grid row-->
-    </section>
-    <!-- Section: Links -->
-  </div>
-  <!-- Grid container --> --}}
 
   <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+  <div class="text-center p-3" style="">
     © 2020 Copyright:
     <a class="text-white" href="/">Anas Allawafeh</a>
   </div>
@@ -283,4 +188,16 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+  scrollUp=()=>{
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+  }
+  function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20){
+            document.getElementById('scrollbtn').style.display='block';
+        } else {
+          document.getElementById('scrollbtn').style.display='none';
+        }
+    }
+</script>
 </html>

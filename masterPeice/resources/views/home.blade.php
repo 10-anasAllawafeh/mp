@@ -11,7 +11,7 @@
   @endif
 </div>
 <section class="vh-100 bg-image"
-style="background-image: url('https://wallpaperaccess.com/full/1251666.jpg'); background-repeat: no-repeat; background-size:cover;"
+style="background-repeat: no-repeat; background-size:cover;"
 >
 <div class="container h-100">
   

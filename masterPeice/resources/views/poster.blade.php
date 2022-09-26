@@ -12,14 +12,16 @@
   @endif
   <div class="row d-flex justify-content-between">
     <h1 class="col-4">{{$posterPosts[0]->name}} Profile</h1>
+    @if ($visitor_id !== '' && $visitor_role != 3)
     <button data-toggle="modal" data-target="#exampleModalCenter" class="col-2 col-sm-12 btn btn-warning mt-3"><h6 class="text-danger">Send Job Offer ?</h6></button>
+    @endif
   </div>
 
   <div class="row">
     <h2>Personal Info</h2>
     <h5>Spicialized : {{$category->name}}</h5>
     <h5>Pricing : {{$posterPosts[0]->Pricing}}$/H</h5>
-    <h5>Rating :  /5</h5>
+    <h5>Rating : {{$rate[0]->summ/$rate[0]->countt}}/5</h5>
   </div>
     @if (count($posterPosts) === 0)
     <div class="container"><h6 style="color: grey;text-align:center">no posts yet</h6></div>

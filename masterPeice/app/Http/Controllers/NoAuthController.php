@@ -39,17 +39,21 @@ class NoAuthController extends Controller
     public function poster($poster_id)
     {
         $posterPosts= DB::select('SELECT * FROM posts INNER JOIN users ON posts.author_id=users.id WHERE author_id=?',[$poster_id]);
+        $rate =DB::select('SELECT SUM(customer_rate) AS summ,COUNT(customer_rate) AS countt FROM joboffers WHERE customer_rate IS NOT NULL AND worker_id=?',[$poster_id]);
+        // dd($rate[0]->summ,$rate[0]->countt);
         $category=Category::find($posterPosts[0]->category_id);
         $visitor_id='';
+        $visitor_role='';
         if (Auth::user() !== null) {
             $visitor_id=Auth::id();
+            $visitor_role=Auth::user()->role_id;
         }
         // dd($visitor_id,$posterPosts[0]->author_id);
         if ($posterPosts[0]->author_id === $visitor_id) {
            return redirect('/home');
         }
         // $posterPosts= Post::whereAuther_id($poster_id);
-        return view('poster',compact('posterPosts','category','visitor_id'));
+        return view('poster',compact('posterPosts','category','visitor_id','visitor_role','rate'));
     }
     public function post($post_id)
     {
